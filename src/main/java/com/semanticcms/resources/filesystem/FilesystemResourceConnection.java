@@ -80,6 +80,7 @@ public class FilesystemResourceConnection extends ResourceConnection {
 
 	@Override
 	public FilesystemResourceFile getResourceFile() throws IOException, FileNotFoundException, IllegalStateException {
+		if(closed) throw new IllegalStateException("Connection closed: " + resource);
 		FilesystemResourceFile resourceFile = new FilesystemResourceFile(this);
 		if(resourceFiles == null) resourceFiles = new ArrayList<FilesystemResourceFile>();
 		resourceFiles.add(resourceFile);
@@ -89,12 +90,14 @@ public class FilesystemResourceConnection extends ResourceConnection {
 	@Override
 	public void close() throws IOException {
 		if(in != null) in.close();
-		if(resourceFiles != null) {
+		if(resourceFiles != null && !resourceFiles.isEmpty()) {
 			FilesystemResourceFile[] closeMe = resourceFiles.toArray(new FilesystemResourceFile[resourceFiles.size()]);
 			for(int i = closeMe.length - 1; i >= 0; i--) {
 				closeMe[i].close();
 			}
+			assert resourceFiles.isEmpty();
 		}
+		closed = true;
 	}
 
 	void onResourceFileClosed(FilesystemResourceFile closed) {
