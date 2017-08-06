@@ -28,14 +28,12 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.ArrayList;
-import java.util.List;
 
 public class FilesystemResourceConnection extends ResourceConnection {
 
-	final File file;
+	private final File file;
 	private FileInputStream in;
-	private List<FilesystemResourceFile> resourceFiles;
+	private boolean fileAccessed;
 	private boolean closed;
 
 	public FilesystemResourceConnection(FilesystemResource resource, File file) {
@@ -74,42 +72,23 @@ public class FilesystemResourceConnection extends ResourceConnection {
 	public InputStream getInputStream() throws IOException, FileNotFoundException, IllegalStateException {
 		if(closed) throw new IllegalStateException("Connection closed: " + resource);
 		if(in != null) throw new IllegalStateException("Input already opened: " + resource.toString());
+		if(fileAccessed) throw new IllegalStateException("File already accessed: " + resource.toString());
 		in = new FileInputStream(file);
 		return in;
 	}
 
 	@Override
-	public FilesystemResourceFile getResourceFile() throws IOException, FileNotFoundException, IllegalStateException {
+	public File getFile() throws IOException, FileNotFoundException, IllegalStateException {
 		if(closed) throw new IllegalStateException("Connection closed: " + resource);
-		FilesystemResourceFile resourceFile = new FilesystemResourceFile(this);
-		if(resourceFiles == null) resourceFiles = new ArrayList<FilesystemResourceFile>();
-		resourceFiles.add(resourceFile);
-		return resourceFile;
+		if(in != null) throw new IllegalStateException("Input already opened: " + resource.toString());
+		if(!file.exists()) throw new FileNotFoundException(file.getPath());
+		fileAccessed = true;
+		return file;
 	}
 
 	@Override
 	public void close() throws IOException {
 		if(in != null) in.close();
-		if(resourceFiles != null && !resourceFiles.isEmpty()) {
-			FilesystemResourceFile[] closeMe = resourceFiles.toArray(new FilesystemResourceFile[resourceFiles.size()]);
-			for(int i = closeMe.length - 1; i >= 0; i--) {
-				closeMe[i].close();
-			}
-			assert resourceFiles.isEmpty();
-		}
 		closed = true;
-	}
-
-	/**
-	 * @see  FilesystemResourceFile#close()
-	 */
-	void onResourceFileClosed(FilesystemResourceFile closed) {
-		assert resourceFiles != null;
-		for(int i = resourceFiles.size() - 1; i >= 0; i--) {
-			if(resourceFiles.get(i) == closed) {
-				resourceFiles.remove(i);
-				break;
-			}
-		}
 	}
 }
