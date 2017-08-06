@@ -53,6 +53,7 @@ public class FilesystemResourceStore implements ResourceStore {
 		if(!directory.canRead()) throw new IOException("Unable to read directory: " + directory.toString());
 		File canonicalDirectory = directory.getCanonicalFile();
 		String canonicalPath = canonicalDirectory.getCanonicalPath();
+		// This double checking on canonical directory might be a bit obsessive, but stores are infrequently created so why not?
 		if(!canonicalDirectory.exists()) throw new FileNotFoundException(canonicalPath);
 		if(!canonicalDirectory.isDirectory()) throw new IOException("Not a directory: " + canonicalPath);
 		if(!canonicalDirectory.canRead()) throw new IOException("Unable to read directory: " + canonicalPath);
@@ -72,6 +73,10 @@ public class FilesystemResourceStore implements ResourceStore {
 		this.directory = directory;
 	}
 
+	public File getDirectory() {
+		return directory;
+	}
+
 	@Override
 	public String toString() {
 		try {
@@ -81,29 +86,24 @@ public class FilesystemResourceStore implements ResourceStore {
 		}
 	}
 
+	/**
+	 * @{inheritDoc}
+	 *
+	 * @param path  Must be a {@link FilesystemResource#checkFilesystemPath(java.lang.String) valid filesystem path}
+	 */
 	@Override
 	public FilesystemResource getResource(String path) {
-		if(path.isEmpty()) throw new IllegalArgumentException("Path is empty");
-		if(!path.startsWith("/")) throw new IllegalArgumentException("Path does not begin with a slash: " + path);
+		FilesystemResource.checkFilesystemPath(path);
 		File file;
 		if(path.equals("/")) {
 			file = directory;
 		} else {
-			if(
-				// Paths start with '/' checked above
-				//path.startsWith("./")
-				//|| path.startsWith("../")
-				path.endsWith("/.")
-				|| path.endsWith("/..")
-				|| path.contains("/./")
-				|| path.contains("/../")
-				|| path.contains("//")
-				|| path.indexOf(0) != -1
-			) throw new IllegalArgumentException("Invalid path: " + path);
 			String subpath;
 			if(path.endsWith("/")) {
+				// Skip first slash and strip ending slash
 				subpath = path.substring(1, path.length() - 1);
 			} else {
+				// Skip first slash
 				subpath = path.substring(1);
 			}
 			file = new File(directory, subpath.replace('/', File.separatorChar));

@@ -40,6 +40,11 @@ public class FilesystemResourceFile implements ResourceFile {
 		return closed ? null : conn.file;
 	}
 
+	/**
+	 * @{inheritDoc}
+	 *
+	 * @see  FilesystemResourceConn#close()
+	 */
 	@Override
 	public void close() throws IOException {
 		if(!closed) {

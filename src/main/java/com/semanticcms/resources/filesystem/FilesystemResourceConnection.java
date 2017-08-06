@@ -100,6 +100,9 @@ public class FilesystemResourceConnection extends ResourceConnection {
 		closed = true;
 	}
 
+	/**
+	 * @see  FilesystemResourceFile#close()
+	 */
 	void onResourceFileClosed(FilesystemResourceFile closed) {
 		assert resourceFiles != null;
 		for(int i = resourceFiles.size() - 1; i >= 0; i--) {

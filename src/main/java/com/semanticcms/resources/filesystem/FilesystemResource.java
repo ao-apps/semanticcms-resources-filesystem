@@ -29,8 +29,28 @@ public class FilesystemResource extends Resource {
 
 	private final File file;
 
+	/**
+	 * In addition to the {@link Resource#checkPath(java.lang.String) restrictions on paths in general},
+	 * paths on the filesystem may not contain a {@link File#separatorChar} that is
+	 * not itself a forward slash (/).
+	 *
+	 * @see  Resource#checkPath(java.lang.String)
+	 * @see  File#separatorChar
+	 */
+	public static String checkFilesystemPath(String path) {
+		checkPath(path);
+		char fileSeparatorChar = File.separatorChar;
+		if(fileSeparatorChar != '/') {
+			if(path.indexOf(fileSeparatorChar) != -1) throw new IllegalArgumentException("path may not contain file separator character (" + fileSeparatorChar + "): " + path);
+		}
+		return path;
+	}
+
+	/**
+	 * @param path  Must be a {@link #checkFilesystemPath(java.lang.String) valid filesystem path}
+	 */
 	public FilesystemResource(FilesystemResourceStore store, String path, File file) {
-		super(store, path);
+		super(store, checkFilesystemPath(path));
 		this.file = file;
 	}
 
