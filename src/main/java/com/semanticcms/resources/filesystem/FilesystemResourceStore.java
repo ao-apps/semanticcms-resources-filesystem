@@ -22,6 +22,7 @@
  */
 package com.semanticcms.resources.filesystem;
 
+import com.aoindustries.net.Path;
 import com.aoindustries.util.WrappedException;
 import com.semanticcms.core.resources.ResourceStore;
 import java.io.File;
@@ -89,22 +90,23 @@ public class FilesystemResourceStore implements ResourceStore {
 	/**
 	 * @{inheritDoc}
 	 *
-	 * @param path  Must be a {@link FilesystemResource#checkFilesystemPath(java.lang.String) valid filesystem path}
+	 * @param path  Must be a {@link FilesystemResource#checkFilesystemPath(com.aoindustries.net.Path) valid filesystem path}
 	 */
 	@Override
-	public FilesystemResource getResource(String path) {
+	public FilesystemResource getResource(Path path) {
 		FilesystemResource.checkFilesystemPath(path);
+		String pathStr = path.toString();
 		File file;
-		if(path.equals("/")) {
+		if(pathStr.equals("/")) {
 			file = directory;
 		} else {
 			String subpath;
-			if(path.endsWith("/")) {
+			if(pathStr.endsWith("/")) {
 				// Skip first slash and strip ending slash
-				subpath = path.substring(1, path.length() - 1);
+				subpath = pathStr.substring(1, pathStr.length() - 1);
 			} else {
 				// Skip first slash
-				subpath = path.substring(1);
+				subpath = pathStr.substring(1);
 			}
 			file = new File(directory, subpath.replace('/', File.separatorChar));
 		}

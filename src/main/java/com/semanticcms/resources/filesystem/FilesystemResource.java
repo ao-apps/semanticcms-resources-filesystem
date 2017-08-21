@@ -22,6 +22,7 @@
  */
 package com.semanticcms.resources.filesystem;
 
+import com.aoindustries.net.Path;
 import com.semanticcms.core.resources.Resource;
 import java.io.File;
 
@@ -30,26 +31,25 @@ public class FilesystemResource extends Resource {
 	private final File file;
 
 	/**
-	 * In addition to the {@link Resource#checkPath(java.lang.String) restrictions on paths in general},
+	 * In addition to the {@link Path#validate(java.lang.String) restrictions on paths in general},
 	 * paths on the filesystem may not contain a {@link File#separatorChar} that is
 	 * not itself a forward slash (/).
 	 *
-	 * @see  Resource#checkPath(java.lang.String)
 	 * @see  File#separatorChar
 	 */
-	public static String checkFilesystemPath(String path) {
-		checkPath(path);
+	public static Path checkFilesystemPath(Path path) {
 		char fileSeparatorChar = File.separatorChar;
 		if(fileSeparatorChar != '/') {
-			if(path.indexOf(fileSeparatorChar) != -1) throw new IllegalArgumentException("path may not contain file separator character (" + fileSeparatorChar + "): " + path);
+			String pathStr = path.toString();
+			if(pathStr.indexOf(fileSeparatorChar) != -1) throw new IllegalArgumentException("path may not contain file separator character (" + fileSeparatorChar + "): " + pathStr);
 		}
 		return path;
 	}
 
 	/**
-	 * @param path  Must be a {@link #checkFilesystemPath(java.lang.String) valid filesystem path}
+	 * @param path  Must be a {@link #checkFilesystemPath(com.aoindustries.net.Path) valid filesystem path}
 	 */
-	public FilesystemResource(FilesystemResourceStore store, String path, File file) {
+	public FilesystemResource(FilesystemResourceStore store, Path path, File file) {
 		super(store, checkFilesystemPath(path));
 		this.file = file;
 	}
