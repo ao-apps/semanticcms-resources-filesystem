@@ -87,6 +87,12 @@ public class FilesystemResourceStore implements ResourceStore {
 		}
 	}
 
+	@Override
+	public boolean isAvailable() {
+		// TODO: ?: return directory.exists();  // Allow unavailable on start-up, too?
+		return true;
+	}
+
 	/**
 	 * @{inheritDoc}
 	 *
