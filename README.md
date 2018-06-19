@@ -1,4 +1,4 @@
-# [<img src="ao-logo.png" alt="AO Logo" width="35" height="40">](https://aoindustries.com/) [SemanticCMS](https://semanticcms.com/) / [Resources](https://semanticcms.com/resources/) / [Filesystem](https://semanticcms.com/resources/filesystem/)
+# [<img src="ao-logo.png" alt="AO Logo" width="35" height="40">](https://github.com/aoindustries) [SemanticCMS](https://github.com/aoindustries/semanticcms) / [Resources](https://github.com/aoindustries/semanticcms-resources) / [Filesystem](https://github.com/aoindustries/semanticcms-resources-filesystem)
 <p>
 	<a href="https://aoindustries.com/life-cycle#project-alpha">
 		<img src="https://semanticcms.com/ao-badges/project-alpha.svg" alt="project: alpha" />
@@ -21,7 +21,7 @@
 	</a>
 </p>
 
-Redistributable sets of [SemanticCMS resources](https://semanticcms.com/resources/) stored in the filesystem.
+Redistributable sets of [SemanticCMS resources](https://github.com/aoindustries/semanticcms-resources) stored in the filesystem.
 
 ## Project Links
 * [Project Home](https://semanticcms.com/resources/filesystem/)
