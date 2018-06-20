@@ -1,6 +1,6 @@
 /*
  * semanticcms-resources-filesystem - Redistributable sets of SemanticCMS resources stored in the filesystem.
- * Copyright (C) 2017  AO Industries, Inc.
+ * Copyright (C) 2017, 2018  AO Industries, Inc.
  *     support@aoindustries.com
  *     7262 Bull Pen Cir
  *     Mobile, AL 36695
@@ -43,7 +43,7 @@ public class FilesystemResourceStore implements ResourceStore {
 	 * Gets the filesystem store for the given directory.
 	 * Only one {@link FilesystemResourceStore} is created per unique {@link File#getCanonicalPath()}.
 	 * <p>
-	 * TODO: Java 1.7: throw NotDirectoryException instead
+	 * Java 1.7: throw NotDirectoryException instead
 	 * </p>
 	 * @throws  FileNotFoundException if file not found
 	 * @throws  IOException  if not directory or not readable
