@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
 semanticcms-resources-filesystem - Redistributable sets of SemanticCMS resources stored in the filesystem.
-Copyright (C) 2017, 2018  AO Industries, Inc.
+Copyright (C) 2017, 2018, 2019  AO Industries, Inc.
     support@aoindustries.com
     7262 Bull Pen Cir
     Mobile, AL 36695
@@ -37,7 +37,7 @@ along with semanticcms-resources-filesystem.  If not, see <http://www.gnu.org/li
 		<documented.groupId>com.semanticcms</documented.groupId><documented.artifactId>semanticcms-resources-filesystem</documented.artifactId>
 		<documented.javaVersion>1.6</documented.javaVersion>
 		<documented.javac.link.javaApi>${javac.link.javaApi.jdk16}</documented.javac.link.javaApi>
-		<documented.name>SemanticCMS Resources Filesystem</documented.name>
+		<documented.name>SemanticCMS 2 Resources Filesystem</documented.name>
 		<documented.shortTitle>Filesystem</documented.shortTitle>
 		<documented.url>https://semanticcms.com/resources/filesystem/</documented.url>
 		<documented.description>Redistributable sets of SemanticCMS resources stored in the filesystem.</documented.description>
