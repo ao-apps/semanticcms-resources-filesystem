@@ -1,6 +1,6 @@
 /*
  * semanticcms-resources-filesystem - Redistributable sets of SemanticCMS resources stored in the filesystem.
- * Copyright (C) 2017, 2018  AO Industries, Inc.
+ * Copyright (C) 2017, 2018, 2019  AO Industries, Inc.
  *     support@aoindustries.com
  *     7262 Bull Pen Cir
  *     Mobile, AL 36695
@@ -56,8 +56,7 @@ public class FilesystemResourceConnection extends ResourceConnection {
 	public long getLength() throws IOException, FileNotFoundException, IllegalStateException {
 		if(closed) throw new IllegalStateException("Connection closed: " + resource);
 		if(!file.exists()) throw new FileNotFoundException(file.getPath());
-		// Java 1.7: Handle 0 as unknown to convert to -1: Files.readAttributes
-		//                 Could do some reflection tricks to avoid hard dependency on Java 1.7, or just bump our java version globally.
+		// TODO: Handle 0 as unknown to convert to -1: Files.readAttributes
 		return file.length();
 	}
 

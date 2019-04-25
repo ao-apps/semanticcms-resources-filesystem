@@ -1,6 +1,6 @@
 /*
  * semanticcms-resources-filesystem - Redistributable sets of SemanticCMS resources stored in the filesystem.
- * Copyright (C) 2017, 2018  AO Industries, Inc.
+ * Copyright (C) 2017, 2018, 2019  AO Industries, Inc.
  *     support@aoindustries.com
  *     7262 Bull Pen Cir
  *     Mobile, AL 36695
@@ -29,6 +29,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.MalformedURLException;
+import java.nio.file.NotDirectoryException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -37,26 +38,25 @@ import java.util.Map;
  */
 public class FilesystemResourceStore implements ResourceStore {
 
-	private static final Map<String,FilesystemResourceStore> filesystemStores = new HashMap<String,FilesystemResourceStore>();
+	private static final Map<String,FilesystemResourceStore> filesystemStores = new HashMap<>();
 
 	/**
 	 * Gets the filesystem store for the given directory.
 	 * Only one {@link FilesystemResourceStore} is created per unique {@link File#getCanonicalPath()}.
-	 * <p>
-	 * Java 1.7: throw NotDirectoryException instead
-	 * </p>
+	 *
 	 * @throws  FileNotFoundException if file not found
-	 * @throws  IOException  if not directory or not readable
+	 * @throws  NotDirectoryException  if not directory
+	 * @throws  IOException  not readable
 	 */
-	public static FilesystemResourceStore getInstance(File directory) throws FileNotFoundException, IOException {
+	public static FilesystemResourceStore getInstance(File directory) throws FileNotFoundException, NotDirectoryException, IOException {
 		if(!directory.exists()) throw new FileNotFoundException(directory.toString());
-		if(!directory.isDirectory()) throw new IOException("Not a directory: " + directory.toString());
+		if(!directory.isDirectory()) throw new NotDirectoryException("Not a directory: " + directory.toString());
 		if(!directory.canRead()) throw new IOException("Unable to read directory: " + directory.toString());
 		File canonicalDirectory = directory.getCanonicalFile();
 		String canonicalPath = canonicalDirectory.getCanonicalPath();
 		// This double checking on canonical directory might be a bit obsessive, but stores are infrequently created so why not?
 		if(!canonicalDirectory.exists()) throw new FileNotFoundException(canonicalPath);
-		if(!canonicalDirectory.isDirectory()) throw new IOException("Not a directory: " + canonicalPath);
+		if(!canonicalDirectory.isDirectory()) throw new NotDirectoryException("Not a directory: " + canonicalPath);
 		if(!canonicalDirectory.canRead()) throw new IOException("Unable to read directory: " + canonicalPath);
 		synchronized(filesystemStores) {
 			FilesystemResourceStore filesystemStore = filesystemStores.get(canonicalPath);
