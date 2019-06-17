@@ -39,5 +39,4 @@ along with semanticcms-resources-filesystem.  If not, see <http://www.gnu.org/li
 		datePublished="2017-08-04T20:33:42-0500"
 		dateModified="${ao:getLastModified('index.html')}"
 	/>
-	<!-- TODO: Pick-up javadocs version, not pom version, in title, here and elsewhere -->
 </jsp:root>
