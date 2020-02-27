@@ -1,6 +1,6 @@
 /*
  * semanticcms-resources-filesystem - Redistributable sets of SemanticCMS resources stored in the filesystem.
- * Copyright (C) 2017, 2018, 2019  AO Industries, Inc.
+ * Copyright (C) 2017, 2018, 2019, 2020  AO Industries, Inc.
  *     support@aoindustries.com
  *     7262 Bull Pen Cir
  *     Mobile, AL 36695
@@ -94,7 +94,7 @@ public class FilesystemResourceStore implements ResourceStore {
 	}
 
 	/**
-	 * @{inheritDoc}
+	 * {@inheritDoc}
 	 *
 	 * @param path  Must be a {@link FilesystemResource#checkFilesystemPath(com.aoindustries.net.Path) valid filesystem path}
 	 */
