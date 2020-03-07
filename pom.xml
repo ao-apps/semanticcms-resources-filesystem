@@ -51,9 +51,9 @@ along with semanticcms-resources-filesystem.  If not, see <http://www.gnu.org/li
 
 	<scm>
 		<!-- Can't inherit due to multi-module -->
-		<connection>scm:git:git://github.com/aoindustries/${project.artifactId}.git</connection>
-		<developerConnection>scm:git:git@github.com:aoindustries/${project.artifactId}.git</developerConnection>
-		<url>https://github.com/aoindustries/${project.artifactId}</url>
+		<connection>scm:git:git://github.com/aoindustries/semanticcms-resources-filesystem.git</connection>
+		<developerConnection>scm:git:git@github.com:aoindustries/semanticcms-resources-filesystem.git</developerConnection>
+		<url>https://github.com/aoindustries/semanticcms-resources-filesystem</url>
 		<tag>HEAD</tag>
 	</scm>
 
