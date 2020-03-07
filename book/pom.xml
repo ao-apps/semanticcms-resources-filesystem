@@ -35,8 +35,6 @@ along with semanticcms-resources-filesystem.  If not, see <http://www.gnu.org/li
 	<properties>
 		<!-- These values are copied from the project being documented -->
 		<documented.artifactId>semanticcms-resources-filesystem</documented.artifactId>
-		<documented.javaVersion>1.8</documented.javaVersion>
-		<documented.javac.link.javaApi>${javac.link.javaApi.jdk8}</documented.javac.link.javaApi>
 		<documented.name>SemanticCMS Resources Filesystem²</documented.name>
 		<documented.shortTitle>Filesystem</documented.shortTitle>
 		<documented.description>Redistributable sets of SemanticCMS resources stored in the filesystem.</documented.description>
