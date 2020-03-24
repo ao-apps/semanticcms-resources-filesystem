@@ -27,7 +27,7 @@ Redistributable sets of [SemanticCMS resources](https://github.com/aoindustries/
 * [Project Home](https://semanticcms.com/resources/filesystem/)
 * [Changelog](https://semanticcms.com/resources/filesystem/changelog)
 * [API Docs](https://semanticcms.com/resources/filesystem/apidocs/)
-* [Maven Central Repository](https://search.maven.org/#search%7Cgav%7C1%7Cg:%22com.semanticcms%22%20AND%20a:%22semanticcms-resources-filesystem%22)
+* [Maven Central Repository](https://search.maven.org/artifact/com.semanticcms/semanticcms-resources-filesystem)
 * [GitHub](https://github.com/aoindustries/semanticcms-resources-filesystem)
 
 ## Contact Us
