@@ -22,8 +22,8 @@
  */
 package com.semanticcms.resources.filesystem;
 
+import com.aoindustries.exception.WrappedException;
 import com.aoindustries.net.Path;
-import com.aoindustries.util.WrappedException;
 import com.semanticcms.core.resources.ResourceStore;
 import java.io.File;
 import java.io.FileNotFoundException;
