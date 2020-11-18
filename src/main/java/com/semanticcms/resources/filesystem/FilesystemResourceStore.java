@@ -22,12 +22,12 @@
  */
 package com.semanticcms.resources.filesystem;
 
-import com.aoindustries.exception.WrappedException;
 import com.aoindustries.net.Path;
 import com.semanticcms.core.resources.ResourceStore;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.UncheckedIOException;
 import java.net.MalformedURLException;
 import java.nio.file.NotDirectoryException;
 import java.util.HashMap;
@@ -83,7 +83,7 @@ public class FilesystemResourceStore implements ResourceStore {
 		try {
 			return directory.toURI().toURL().toExternalForm();
 		} catch(MalformedURLException e) {
-			throw new WrappedException(e);
+			throw new UncheckedIOException(e);
 		}
 	}
 
