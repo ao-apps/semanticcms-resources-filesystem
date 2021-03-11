@@ -1,6 +1,6 @@
 /*
  * semanticcms-resources-filesystem - Redistributable sets of SemanticCMS resources stored in the filesystem.
- * Copyright (C) 2017, 2018, 2019, 2020  AO Industries, Inc.
+ * Copyright (C) 2017, 2018, 2019, 2020, 2021  AO Industries, Inc.
  *     support@aoindustries.com
  *     7262 Bull Pen Cir
  *     Mobile, AL 36695
@@ -38,7 +38,7 @@ import java.util.Map;
  */
 public class FilesystemResourceStore implements ResourceStore {
 
-	private static final Map<String,FilesystemResourceStore> filesystemStores = new HashMap<>();
+	private static final Map<String, FilesystemResourceStore> filesystemStores = new HashMap<>();
 
 	/**
 	 * Gets the filesystem store for the given directory.
