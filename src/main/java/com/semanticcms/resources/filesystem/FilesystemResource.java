@@ -1,6 +1,6 @@
 /*
  * semanticcms-resources-filesystem - Redistributable sets of SemanticCMS resources stored in the filesystem.
- * Copyright (C) 2017  AO Industries, Inc.
+ * Copyright (C) 2017, 2021  AO Industries, Inc.
  *     support@aoindustries.com
  *     7262 Bull Pen Cir
  *     Mobile, AL 36695
@@ -22,7 +22,7 @@
  */
 package com.semanticcms.resources.filesystem;
 
-import com.aoindustries.net.Path;
+import com.aoapps.net.Path;
 import com.semanticcms.core.resources.Resource;
 import java.io.File;
 
@@ -47,7 +47,7 @@ public class FilesystemResource extends Resource {
 	}
 
 	/**
-	 * @param path  Must be a {@link #checkFilesystemPath(com.aoindustries.net.Path) valid filesystem path}
+	 * @param path  Must be a {@link #checkFilesystemPath(com.aoapps.net.Path) valid filesystem path}
 	 */
 	public FilesystemResource(FilesystemResourceStore store, Path path, File file) {
 		super(store, checkFilesystemPath(path));

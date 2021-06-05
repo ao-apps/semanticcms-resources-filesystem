@@ -22,7 +22,7 @@
  */
 package com.semanticcms.resources.filesystem;
 
-import com.aoindustries.net.Path;
+import com.aoapps.net.Path;
 import com.semanticcms.core.resources.ResourceStore;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -94,7 +94,7 @@ public class FilesystemResourceStore implements ResourceStore {
 	}
 
 	/**
-	 * @param path  Must be a {@link FilesystemResource#checkFilesystemPath(com.aoindustries.net.Path) valid filesystem path}
+	 * @param path  Must be a {@link FilesystemResource#checkFilesystemPath(com.aoapps.net.Path) valid filesystem path}
 	 */
 	@Override
 	public FilesystemResource getResource(Path path) {
