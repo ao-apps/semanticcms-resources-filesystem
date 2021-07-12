@@ -7,6 +7,8 @@
 [![semantic versioning: 2.0.0](https://semanticcms.com/ao-badges/semver-2.0.0.svg)](http://semver.org/spec/v2.0.0.html)
 [![license: LGPL v3](https://semanticcms.com/ao-badges/license-lgpl-3.0.svg)](https://www.gnu.org/licenses/lgpl-3.0)
 
+[![Build](https://github.com/aoindustries/semanticcms-resources-filesystem/workflows/Build/badge.svg?branch=master)](https://github.com/aoindustries/semanticcms-resources-filesystem/actions?query=workflow%3ABuild)
+
 Redistributable sets of [SemanticCMS resources](https://github.com/aoindustries/semanticcms-resources) stored in the filesystem.
 
 ## Project Links
