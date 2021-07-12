@@ -38,6 +38,10 @@ along with semanticcms-resources-filesystem.  If not, see <http://www.gnu.org/li
 / <a target="${javadoc.target}" href="https://semanticcms.com/resources/">Resources</a>
 / <a target="${javadoc.target}" href="${project.url}">Filesystem</a>]]></javadoc.breadcrumbs>
 		<description.html><![CDATA[Redistributable sets of <a target="${javadoc.target}" href="https://semanticcms.com/resources/">SemanticCMS resources</a> stored in the filesystem.]]></description.html>
+		<!-- SonarCloud.io -->
+		<sonar.projectKey>${project.groupId}:${project.artifactId}</sonar.projectKey>
+		<sonar.organization>aoindustries</sonar.organization>
+		<sonar.host.url>https://sonarcloud.io</sonar.host.url>
 	</properties>
 
 	<name>SemanticCMS Resources Filesystem²</name>
