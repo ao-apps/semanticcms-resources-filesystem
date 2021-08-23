@@ -42,6 +42,8 @@ along with semanticcms-resources-filesystem.  If not, see <http://www.gnu.org/li
 		<sonar.projectKey>${project.groupId}:${project.artifactId}</sonar.projectKey>
 		<sonar.organization>aoindustries</sonar.organization>
 		<sonar.host.url>https://sonarcloud.io</sonar.host.url>
+		<!-- TODO: Implement tests -->
+		<sonar.coverage.exclusions>**.*</sonar.coverage.exclusions>
 	</properties>
 
 	<name>SemanticCMS Resources Filesystem²</name>
