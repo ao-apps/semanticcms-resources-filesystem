@@ -96,6 +96,9 @@ along with semanticcms-resources-filesystem.  If not, see <https://www.gnu.org/l
 			<releases>
 				<enabled>false</enabled>
 			</releases>
+			<snapshots>
+				<checksumPolicy>fail</checksumPolicy>
+			</snapshots>
 		</repository>
 	</repositories>
 
