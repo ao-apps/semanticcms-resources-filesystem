@@ -1,6 +1,6 @@
 /*
  * semanticcms-resources-filesystem - Redistributable sets of SemanticCMS resources stored in the filesystem.
- * Copyright (C) 2021  AO Industries, Inc.
+ * Copyright (C) 2021, 2022  AO Industries, Inc.
  *     support@aoindustries.com
  *     7262 Bull Pen Cir
  *     Mobile, AL 36695
@@ -21,8 +21,8 @@
  * along with semanticcms-resources-filesystem.  If not, see <https://www.gnu.org/licenses/>.
  */
 module com.semanticcms.resources.filesystem {
-	exports com.semanticcms.resources.filesystem;
-	// Direct
-	requires com.aoapps.net.types; // <groupId>com.aoapps</groupId><artifactId>ao-net-types</artifactId>
-	requires com.semanticcms.core.resources; // <groupId>com.semanticcms</groupId><artifactId>semanticcms-core-resources</artifactId>
+  exports com.semanticcms.resources.filesystem;
+  // Direct
+  requires com.aoapps.net.types; // <groupId>com.aoapps</groupId><artifactId>ao-net-types</artifactId>
+  requires com.semanticcms.core.resources; // <groupId>com.semanticcms</groupId><artifactId>semanticcms-core-resources</artifactId>
 }

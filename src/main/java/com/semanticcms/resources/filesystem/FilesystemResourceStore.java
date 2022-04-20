@@ -39,82 +39,94 @@ import java.util.Map;
  */
 public class FilesystemResourceStore implements ResourceStore {
 
-	private static final Map<String, FilesystemResourceStore> filesystemStores = new HashMap<>();
+  private static final Map<String, FilesystemResourceStore> filesystemStores = new HashMap<>();
 
-	/**
-	 * Gets the filesystem store for the given directory.
-	 * Only one {@link FilesystemResourceStore} is created per unique {@link File#getCanonicalPath()}.
-	 *
-	 * @throws  FileNotFoundException if file not found
-	 * @throws  NotDirectoryException  if not directory
-	 * @throws  IOException  not readable
-	 */
-	public static FilesystemResourceStore getInstance(File directory) throws FileNotFoundException, NotDirectoryException, IOException {
-		if(!directory.exists()) throw new FileNotFoundException(directory.toString());
-		if(!directory.isDirectory()) throw new NotDirectoryException("Not a directory: " + directory.toString());
-		if(!directory.canRead()) throw new IOException("Unable to read directory: " + directory.toString());
-		File canonicalDirectory = directory.getCanonicalFile();
-		String canonicalPath = canonicalDirectory.getCanonicalPath();
-		// This double checking on canonical directory might be a bit obsessive, but stores are infrequently created so why not?
-		if(!canonicalDirectory.exists()) throw new FileNotFoundException(canonicalPath);
-		if(!canonicalDirectory.isDirectory()) throw new NotDirectoryException("Not a directory: " + canonicalPath);
-		if(!canonicalDirectory.canRead()) throw new IOException("Unable to read directory: " + canonicalPath);
-		synchronized(filesystemStores) {
-			FilesystemResourceStore filesystemStore = filesystemStores.get(canonicalPath);
-			if(filesystemStore == null) {
-				filesystemStore = new FilesystemResourceStore(canonicalDirectory);
-				filesystemStores.put(canonicalPath, filesystemStore);
-			}
-			return filesystemStore;
-		}
-	}
+  /**
+   * Gets the filesystem store for the given directory.
+   * Only one {@link FilesystemResourceStore} is created per unique {@link File#getCanonicalPath()}.
+   *
+   * @throws  FileNotFoundException if file not found
+   * @throws  NotDirectoryException  if not directory
+   * @throws  IOException  not readable
+   */
+  public static FilesystemResourceStore getInstance(File directory) throws FileNotFoundException, NotDirectoryException, IOException {
+    if (!directory.exists()) {
+      throw new FileNotFoundException(directory.toString());
+    }
+    if (!directory.isDirectory()) {
+      throw new NotDirectoryException("Not a directory: " + directory.toString());
+    }
+    if (!directory.canRead()) {
+      throw new IOException("Unable to read directory: " + directory.toString());
+    }
+    File canonicalDirectory = directory.getCanonicalFile();
+    String canonicalPath = canonicalDirectory.getCanonicalPath();
+    // This double checking on canonical directory might be a bit obsessive, but stores are infrequently created so why not?
+    if (!canonicalDirectory.exists()) {
+      throw new FileNotFoundException(canonicalPath);
+    }
+    if (!canonicalDirectory.isDirectory()) {
+      throw new NotDirectoryException("Not a directory: " + canonicalPath);
+    }
+    if (!canonicalDirectory.canRead()) {
+      throw new IOException("Unable to read directory: " + canonicalPath);
+    }
+    synchronized (filesystemStores) {
+      FilesystemResourceStore filesystemStore = filesystemStores.get(canonicalPath);
+      if (filesystemStore == null) {
+        filesystemStore = new FilesystemResourceStore(canonicalDirectory);
+        filesystemStores.put(canonicalPath, filesystemStore);
+      }
+      return filesystemStore;
+    }
+  }
 
-	private final File directory;
+  private final File directory;
 
-	private FilesystemResourceStore(File directory) {
-		this.directory = directory;
-	}
+  private FilesystemResourceStore(File directory) {
+    this.directory = directory;
+  }
 
-	public File getDirectory() {
-		return directory;
-	}
+  public File getDirectory() {
+    return directory;
+  }
 
-	@Override
-	public String toString() {
-		try {
-			return directory.toURI().toURL().toExternalForm();
-		} catch(MalformedURLException e) {
-			throw new UncheckedIOException(e);
-		}
-	}
+  @Override
+  public String toString() {
+    try {
+      return directory.toURI().toURL().toExternalForm();
+    } catch (MalformedURLException e) {
+      throw new UncheckedIOException(e);
+    }
+  }
 
-	@Override
-	public boolean isAvailable() {
-		// TODO: ?: return directory.exists();  // Allow unavailable on start-up, too?
-		return true;
-	}
+  @Override
+  public boolean isAvailable() {
+    // TODO: ?: return directory.exists();  // Allow unavailable on start-up, too?
+    return true;
+  }
 
-	/**
-	 * @param path  Must be a {@link FilesystemResource#checkFilesystemPath(com.aoapps.net.Path) valid filesystem path}
-	 */
-	@Override
-	public FilesystemResource getResource(Path path) {
-		FilesystemResource.checkFilesystemPath(path);
-		String pathStr = path.toString();
-		File file;
-		if(pathStr.equals("/")) {
-			file = directory;
-		} else {
-			String subpath;
-			if(pathStr.endsWith("/")) {
-				// Skip first slash and strip ending slash
-				subpath = pathStr.substring(1, pathStr.length() - 1);
-			} else {
-				// Skip first slash
-				subpath = pathStr.substring(1);
-			}
-			file = new File(directory, subpath.replace('/', File.separatorChar));
-		}
-		return new FilesystemResource(this, path, file);
-	}
+  /**
+   * @param path  Must be a {@link FilesystemResource#checkFilesystemPath(com.aoapps.net.Path) valid filesystem path}
+   */
+  @Override
+  public FilesystemResource getResource(Path path) {
+    FilesystemResource.checkFilesystemPath(path);
+    String pathStr = path.toString();
+    File file;
+    if (pathStr.equals("/")) {
+      file = directory;
+    } else {
+      String subpath;
+      if (pathStr.endsWith("/")) {
+        // Skip first slash and strip ending slash
+        subpath = pathStr.substring(1, pathStr.length() - 1);
+      } else {
+        // Skip first slash
+        subpath = pathStr.substring(1);
+      }
+      file = new File(directory, subpath.replace('/', File.separatorChar));
+    }
+    return new FilesystemResource(this, path, file);
+  }
 }

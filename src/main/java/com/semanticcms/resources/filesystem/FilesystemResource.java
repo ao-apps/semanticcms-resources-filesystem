@@ -29,49 +29,51 @@ import java.io.File;
 
 public class FilesystemResource extends Resource {
 
-	private final File file;
+  private final File file;
 
-	/**
-	 * In addition to the {@link Path#validate(java.lang.String) restrictions on paths in general},
-	 * paths on the filesystem may not contain a {@link File#separatorChar} that is
-	 * not itself a forward slash (/).
-	 *
-	 * @see  File#separatorChar
-	 */
-	public static Path checkFilesystemPath(Path path) {
-		char fileSeparatorChar = File.separatorChar;
-		if(fileSeparatorChar != '/') {
-			String pathStr = path.toString();
-			if(pathStr.indexOf(fileSeparatorChar) != -1) throw new IllegalArgumentException("path may not contain file separator character (" + fileSeparatorChar + "): " + pathStr);
-		}
-		return path;
-	}
+  /**
+   * In addition to the {@link Path#validate(java.lang.String) restrictions on paths in general},
+   * paths on the filesystem may not contain a {@link File#separatorChar} that is
+   * not itself a forward slash (/).
+   *
+   * @see  File#separatorChar
+   */
+  public static Path checkFilesystemPath(Path path) {
+    char fileSeparatorChar = File.separatorChar;
+    if (fileSeparatorChar != '/') {
+      String pathStr = path.toString();
+      if (pathStr.indexOf(fileSeparatorChar) != -1) {
+        throw new IllegalArgumentException("path may not contain file separator character (" + fileSeparatorChar + "): " + pathStr);
+      }
+    }
+    return path;
+  }
 
-	/**
-	 * @param path  Must be a {@link #checkFilesystemPath(com.aoapps.net.Path) valid filesystem path}
-	 */
-	public FilesystemResource(FilesystemResourceStore store, Path path, File file) {
-		super(store, checkFilesystemPath(path));
-		this.file = file;
-	}
+  /**
+   * @param path  Must be a {@link #checkFilesystemPath(com.aoapps.net.Path) valid filesystem path}
+   */
+  public FilesystemResource(FilesystemResourceStore store, Path path, File file) {
+    super(store, checkFilesystemPath(path));
+    this.file = file;
+  }
 
-	@Override
-	public FilesystemResourceStore getStore() {
-		return (FilesystemResourceStore)store;
-	}
+  @Override
+  public FilesystemResourceStore getStore() {
+    return (FilesystemResourceStore)store;
+  }
 
-	@Override
-	public boolean isFilePreferred() {
-		return true;
-	}
+  @Override
+  public boolean isFilePreferred() {
+    return true;
+  }
 
-	@Override
-	public File getFile() {
-		return file;
-	}
+  @Override
+  public File getFile() {
+    return file;
+  }
 
-	@Override
-	public FilesystemResourceConnection open() {
-		return new FilesystemResourceConnection(this, file);
-	}
+  @Override
+  public FilesystemResourceConnection open() {
+    return new FilesystemResourceConnection(this, file);
+  }
 }
