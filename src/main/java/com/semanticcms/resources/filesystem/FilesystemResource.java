@@ -59,7 +59,7 @@ public class FilesystemResource extends Resource {
 
   @Override
   public FilesystemResourceStore getStore() {
-    return (FilesystemResourceStore)store;
+    return (FilesystemResourceStore) store;
   }
 
   @Override

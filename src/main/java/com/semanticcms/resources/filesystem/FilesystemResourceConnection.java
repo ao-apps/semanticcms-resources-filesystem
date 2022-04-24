@@ -44,7 +44,7 @@ public class FilesystemResourceConnection extends ResourceConnection {
 
   @Override
   public FilesystemResource getResource() {
-    return (FilesystemResource)resource;
+    return (FilesystemResource) resource;
   }
 
   @Override
