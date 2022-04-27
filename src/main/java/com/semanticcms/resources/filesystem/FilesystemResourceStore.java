@@ -114,7 +114,7 @@ public class FilesystemResourceStore implements ResourceStore {
     FilesystemResource.checkFilesystemPath(path);
     String pathStr = path.toString();
     File file;
-    if (pathStr.equals("/")) {
+    if ("/".equals(pathStr)) {
       file = directory;
     } else {
       String subpath;
