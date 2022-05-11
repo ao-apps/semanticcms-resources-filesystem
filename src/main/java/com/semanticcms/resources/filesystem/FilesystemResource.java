@@ -27,6 +27,9 @@ import com.aoapps.net.Path;
 import com.semanticcms.core.resources.Resource;
 import java.io.File;
 
+/**
+ * Local filesystem resources.
+ */
 public class FilesystemResource extends Resource {
 
   private final File file;
@@ -50,6 +53,8 @@ public class FilesystemResource extends Resource {
   }
 
   /**
+   * Creates a new local filesystem resource.
+   *
    * @param path  Must be a {@link #checkFilesystemPath(com.aoapps.net.Path) valid filesystem path}
    */
   public FilesystemResource(FilesystemResourceStore store, Path path, File file) {

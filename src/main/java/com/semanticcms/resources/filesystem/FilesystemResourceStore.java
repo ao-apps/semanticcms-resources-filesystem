@@ -107,6 +107,8 @@ public class FilesystemResourceStore implements ResourceStore {
   }
 
   /**
+   * {@inheritDoc}
+   *
    * @param path  Must be a {@link FilesystemResource#checkFilesystemPath(com.aoapps.net.Path) valid filesystem path}
    */
   @Override

@@ -30,6 +30,9 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 
+/**
+ * A connection to a local filesystem resource.
+ */
 public class FilesystemResourceConnection extends ResourceConnection {
 
   private final File file;
@@ -37,6 +40,10 @@ public class FilesystemResourceConnection extends ResourceConnection {
   private boolean fileAccessed;
   private boolean closed;
 
+  /**
+   * Creates a new connection tracker to the given resource.
+   * The actual connection to the underlying resource is only created when first required.
+   */
   public FilesystemResourceConnection(FilesystemResource resource, File file) {
     super(resource);
     this.file = file;
