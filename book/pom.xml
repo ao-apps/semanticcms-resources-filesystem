@@ -36,15 +36,15 @@ along with semanticcms-resources-filesystem.  If not, see <https://www.gnu.org/l
     <module.name>com.semanticcms.resources.filesystem.book</module.name>
     <!-- These values are copied from the project being documented -->
     <documented.artifactId>semanticcms-resources-filesystem</documented.artifactId>
-    <documented.name>SemanticCMS Resources Filesystem²</documented.name>
+    <documented.name>SemanticCMS Resources Filesystem</documented.name>
     <documented.description>Redistributable sets of SemanticCMS resources stored in the filesystem.</documented.description>
 
     <description.html><![CDATA[Documentation for <a target="${javadoc.target}" href="${project.url}">${documented.name}</a> in <a target="${javadoc.target}" href="https://semanticcms.com/">SemanticCMS</a> format.]]></description.html>
   </properties>
 
-  <name>SemanticCMS Resources Filesystem² Book</name>
+  <name>SemanticCMS Resources Filesystem Book</name>
   <url>https://semanticcms.com/resources/filesystem/</url>
-  <description>Documentation for SemanticCMS Resources Filesystem² in SemanticCMS format.</description>
+  <description>Documentation for SemanticCMS Resources Filesystem in SemanticCMS format.</description>
   <inceptionYear>2017</inceptionYear>
 
   <licenses>

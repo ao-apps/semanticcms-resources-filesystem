@@ -46,7 +46,7 @@ along with semanticcms-resources-filesystem.  If not, see <https://www.gnu.org/l
     <sonar.coverage.exclusions>**.*</sonar.coverage.exclusions>
   </properties>
 
-  <name>SemanticCMS Resources Filesystem²</name>
+  <name>SemanticCMS Resources Filesystem</name>
   <url>https://semanticcms.com/resources/filesystem/</url>
   <description>Redistributable sets of SemanticCMS resources stored in the filesystem.</description>
   <inceptionYear>2017</inceptionYear>
