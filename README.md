@@ -22,7 +22,7 @@ Redistributable sets of [SemanticCMS resources](https://github.com/ao-apps/seman
 * [Project Home](https://semanticcms.com/resources/filesystem/)
 * [Changelog](https://semanticcms.com/resources/filesystem/changelog)
 * [API Docs](https://semanticcms.com/resources/filesystem/apidocs/)
-* [Maven Central Repository](https://central.sonatype.com/search?namespace=com.semanticcms&q=a%3Asemanticcms-resources-filesystem)
+* [Maven Central Repository](https://central.sonatype.com/artifact/com.semanticcms/semanticcms-resources-filesystem)
 * [GitHub](https://github.com/ao-apps/semanticcms-resources-filesystem)
 
 ## Contact Us
