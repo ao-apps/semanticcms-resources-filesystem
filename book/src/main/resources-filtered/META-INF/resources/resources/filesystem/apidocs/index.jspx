@@ -39,5 +39,6 @@ along with semanticcms-resources-filesystem.  If not, see <https://www.gnu.org/l
     shortTitle="API Docs"
     datePublished="2017-08-04T20:33:42-05:00"
     dateModified="${ao:getLastModified('index.html')}"
+    allowRobots="false"
   />
 </jsp:root>
