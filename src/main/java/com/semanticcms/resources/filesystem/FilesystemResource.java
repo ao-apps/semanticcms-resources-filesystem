@@ -55,7 +55,7 @@ public class FilesystemResource extends Resource {
   /**
    * Creates a new local filesystem resource.
    *
-   * @param path  Must be a {@link #checkFilesystemPath(com.aoapps.net.Path) valid filesystem path}
+   * @param path  Must be a {@link FilesystemResource#checkFilesystemPath(com.aoapps.net.Path) valid filesystem path}
    */
   public FilesystemResource(FilesystemResourceStore store, Path path, File file) {
     super(store, checkFilesystemPath(path));
